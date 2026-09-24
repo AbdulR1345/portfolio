@@ -229,9 +229,11 @@
             <form
               id="contact-form"
               name="contact"
+              action="/"
               method="POST"
               data-netlify="true"
             >
+              <input type="hidden" name="form-name" value="contact" />
               <div class="form-group">
                 <label for="name">Name</label>
                 <input
