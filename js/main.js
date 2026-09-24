@@ -223,20 +223,6 @@
 
   observeReveals();
 
-  // ——— Contact form (mailto fallback) ———
-  const form = document.getElementById("contact-form");
-  form?.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const fd = new FormData(form);
-    const subject = encodeURIComponent(
-      `Portfolio contact from ${fd.get("name")}`,
-    );
-    const body = encodeURIComponent(
-      `Name: ${fd.get("name")}\nEmail: ${fd.get("email")}\n\n${fd.get("message")}`,
-    );
-    window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
-  });
-
   // ——— Helpers ———
   function setText(id, text) {
     const el = document.getElementById(id);

@@ -12,7 +12,7 @@ const PORTFOLIO = {
     "I'm a full stack developer who loves turning complex problems into elegant, accessible software. I work across the entire stack — responsive frontends, scalable backends, and thoughtful data models.",
     "Whether it's a greenfield MVP or evolving an existing product, I focus on clean architecture, performance, and user experience. When I'm not coding, I'm exploring new tools and contributing to open source.",
   ],
-  resumeUrl: "#",
+  resumeUrl: "images/resume.pdf",
   email: "rahamanrahi13@gmail.com",
   contactNote:
     "Open to freelance, full-time roles, and interesting collaborations. Drop a line — I typically reply within 24 hours.",
