@@ -1,6 +1,18 @@
 (function () {
-  const { name, tagline, yearsExperience, projectsCount, about, resumeUrl, email, contactNote, social, skills, projects, projectFilters } =
-    PORTFOLIO;
+  const {
+    name,
+    tagline,
+    yearsExperience,
+    projectsCount,
+    about,
+    resumeUrl,
+    email,
+    contactNote,
+    social,
+    skills,
+    projects,
+    projectFilters,
+  } = PORTFOLIO;
 
   // ——— Populate static content ———
   document.title = `${name} | Full Stack Developer`;
@@ -36,7 +48,7 @@
           ${group.items.map((item) => `<span class="skill-tag">${escapeHtml(item)}</span>`).join("")}
         </div>
       </article>
-    `
+    `,
       )
       .join("");
   }
@@ -55,7 +67,7 @@
         data-filter="${f.id}" role="tab" aria-selected="${f.id === activeFilter}">
         ${escapeHtml(f.label)}
       </button>
-    `
+    `,
       )
       .join("");
 
@@ -126,7 +138,7 @@
       <a href="${escapeHtml(s.url)}" class="social-link" target="_blank" rel="noopener" aria-label="${escapeHtml(s.label)}">
         ${socialIcon(s.icon)}
       </a>
-    `
+    `,
       )
       .join("");
   }
@@ -150,7 +162,7 @@
     () => {
       header?.classList.toggle("scrolled", window.scrollY > 40);
     },
-    { passive: true }
+    { passive: true },
   );
 
   // ——— Mobile nav ———
@@ -187,7 +199,7 @@
         }
       });
     },
-    { rootMargin: "-40% 0px -55% 0px" }
+    { rootMargin: "-40% 0px -55% 0px" },
   );
 
   sections.forEach((s) => sectionObserver.observe(s));
@@ -204,24 +216,12 @@
           }
         });
       },
-      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
     );
     reveals.forEach((el) => revealObserver.observe(el));
   }
 
   observeReveals();
-
-  // ——— Contact form (mailto fallback) ———
-  const form = document.getElementById("contact-form");
-  form?.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const fd = new FormData(form);
-    const subject = encodeURIComponent(`Portfolio contact from ${fd.get("name")}`);
-    const body = encodeURIComponent(
-      `Name: ${fd.get("name")}\nEmail: ${fd.get("email")}\n\n${fd.get("message")}`
-    );
-    window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
-  });
 
   // ——— Helpers ———
   function setText(id, text) {
