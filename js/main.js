@@ -1,6 +1,7 @@
 (function () {
   const {
     name,
+    role,
     tagline,
     yearsExperience,
     projectsCount,
@@ -15,9 +16,11 @@
   } = PORTFOLIO;
 
   // ——— Populate static content ———
-  document.title = `${name} | Full Stack Developer`;
+  document.title = `${name} | ${role}`;
   setText("hero-name", name);
   setText("code-name", `"${name}"`);
+  setText("hero-role", role.toLowerCase());
+  setText("code-role", `"${role}"`);
   setText("hero-tagline", tagline);
   setText("stat-years", yearsExperience);
   setText("stat-projects", projectsCount);
@@ -222,6 +225,65 @@
   }
 
   observeReveals();
+
+  const form = document.getElementById("contact-form");
+  const formStatus = document.getElementById("contact-status");
+  const submitButton = document.getElementById("contact-submit");
+
+  form?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (!form.reportValidity()) return;
+
+    const formData = new FormData(form);
+    const subject = encodeURIComponent(
+      `Portfolio contact from ${formData.get("name")}`,
+    );
+    const body = encodeURIComponent(
+      `Name: ${formData.get("name")}\nEmail: ${formData.get("email")}\n\n${formData.get("message")}`,
+    );
+
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.textContent = "Sending...";
+    }
+    setFormStatus("Sending your message...", "pending");
+
+    try {
+      const response = await fetch(form.action || "/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formData),
+      });
+
+      if (!response.ok)
+        throw new Error(`Form submission failed: ${response.status}`);
+
+      form.reset();
+      setFormStatus("Thanks. Your message has been sent.", "success");
+    } catch {
+      setFormStatus(
+        "The online form is unavailable. Email me directly: ",
+        "error",
+      );
+      if (formStatus) {
+        const emailLink = document.createElement("a");
+        emailLink.href = `mailto:${email}?subject=${subject}&body=${body}`;
+        emailLink.textContent = email;
+        formStatus.append(emailLink);
+      }
+    } finally {
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.textContent = "Send message";
+      }
+    }
+  });
+
+  function setFormStatus(message, state) {
+    if (!formStatus) return;
+    formStatus.textContent = message;
+    formStatus.dataset.state = state;
+  }
 
   // ——— Helpers ———
   function setText(id, text) {

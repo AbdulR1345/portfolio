@@ -847,6 +847,30 @@ button {
   text-align: center;
 }
 
+.form-status {
+  min-height: 1.5rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.form-status[data-state="success"] {
+  color: var(--accent);
+}
+
+.form-status[data-state="error"] {
+  color: #fca5a5;
+}
+
+.form-status a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+button:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
 /* ===== Footer ===== */
 .footer {
   position: relative;

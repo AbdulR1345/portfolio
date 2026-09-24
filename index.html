@@ -55,7 +55,7 @@
               Hi, I'm
               <span class="hero__name" id="hero-name">Abdul Rahaman</span
               ><span class="hero__comma">,</span>
-              <em class="hero__role">full stack developer</em>
+              <em class="hero__role" id="hero-role">full stack developer</em>
               crafting digital experiences end to end.
             </h1>
             <p class="hero__lead" id="hero-tagline">
@@ -95,7 +95,7 @@
                 class="code-window__body"
               ><code><span class="tok-keyword">const</span> developer = {
   <span class="tok-prop">name</span>: <span class="tok-string" id="code-name">"Abdul Rahaman"</span>,
-  <span class="tok-prop">role</span>: <span class="tok-string">"Full Stack Developer"</span>,
+  <span class="tok-prop">role</span>: <span class="tok-string" id="code-role">"Full Stack Developer"</span>,
   <span class="tok-prop">stack</span>: [<span class="tok-string">"React"</span>, <span class="tok-string">"Node"</span>, <span class="tok-string">"PostgreSQL"</span>],
   <span class="tok-prop">passion</span>: <span class="tok-string">"shipping great products"</span>,
   <span class="tok-fn">build</span>(<span class="tok-param">idea</span>) {
@@ -229,11 +229,16 @@
             <form
               id="contact-form"
               name="contact"
+              class="contact__form"
               action="/"
               method="POST"
               data-netlify="true"
+              data-netlify-honeypot="bot-field"
             >
               <input type="hidden" name="form-name" value="contact" />
+              <div hidden>
+                <label>Don't fill this out: <input name="bot-field" /></label>
+              </div>
               <div class="form-group">
                 <label for="name">Name</label>
                 <input
@@ -263,7 +268,17 @@
                   required
                 ></textarea>
               </div>
-              <button type="submit" class="btn btn--primary btn--full">
+              <p
+                class="form-status"
+                id="contact-status"
+                role="status"
+                aria-live="polite"
+              ></p>
+              <button
+                type="submit"
+                class="btn btn--primary btn--full"
+                id="contact-submit"
+              >
                 Send message
               </button>
             </form>

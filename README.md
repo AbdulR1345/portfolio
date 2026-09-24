@@ -12,12 +12,12 @@ A modern, single-page portfolio for full stack developers. No build step — ope
 
 ## Customize
 
-| What to change | File |
-|----------------|------|
-| Name, email, social, about text | `js/config.js` → `PORTFOLIO` object |
-| Projects (title, images, tags, URLs) | `js/config.js` → `projects` array |
-| Skills | `js/config.js` → `skills` array |
-| Colors & fonts | `css/styles.css` → `:root` variables |
+| What to change                       | File                                 |
+| ------------------------------------ | ------------------------------------ |
+| Name, email, social, about text      | `js/config.js` → `PORTFOLIO` object  |
+| Projects (title, images, tags, URLs) | `js/config.js` → `projects` array    |
+| Skills                               | `js/config.js` → `skills` array      |
+| Colors & fonts                       | `css/styles.css` → `:root` variables |
 
 ### Adding a project
 
@@ -37,12 +37,12 @@ A modern, single-page portfolio for full stack developers. No build step — ope
 
 ### Contact form
 
-The form uses `mailto:` by default. For serverless handling, use [Formspree](https://formspree.io) or [Netlify Forms](https://docs.netlify.com/forms/setup/) and update the form `action` in `index.html`.
+The form uses Netlify Forms and submits without leaving the page. Deploy this project through Netlify, then enable form email notifications in the Netlify dashboard for `rahamanrahi13@gmail.com`. If Netlify is unavailable, the form displays a direct email fallback.
 
 ## Deploy
 
-- **GitHub Pages**: Push repo → Settings → Pages → deploy from `main` branch root.
-- **Netlify / Vercel**: Drag the folder or connect the repo; no build command needed.
+- **Netlify**: Connect the repository and publish the project root (`.`). Netlify Forms must be enabled for contact submissions.
+- **GitHub Pages / Vercel**: The portfolio will render, but Netlify Forms will not process submissions there.
 
 ## Structure
 
